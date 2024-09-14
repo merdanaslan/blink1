@@ -36,7 +36,7 @@ app.get("/", (c) => {
   const response: ActionGetResponse = {
     title: "Send MAINDOCS some SOL",
     description: "This is a tip jar for MAINDOCS",
-    icon: "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=334,fit=crop,q=95/Yg2lOwJKvXuOZErr/high_res_no_background-YanB2GQwqEUo2QX4.png",
+    icon: "https://pbs.twimg.com/profile_banners/1774017790728396800/1711904900/1500x500",
     label: "Tip 0.001 SOL",
   };
 
@@ -60,7 +60,7 @@ async function prepareTransaction(payer: PublicKey) {
     fromPubkey: payer,
     toPubkey: new PublicKey("7DqbEWdH4ufSPZkpzseghzkwKtBgin9uRtBUkDj834r6"),
     //lamports: 10000000, // 0.1 sol
-    lamports: 1000000, // 0.001 sol 
+    lamports: 1000000, // 0.001 sol
   });
 
   const blockhash = await connection
