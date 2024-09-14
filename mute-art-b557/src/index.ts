@@ -34,10 +34,10 @@ app.use(
 
 app.get("/", (c) => {
   const response: ActionGetResponse = {
-    title: "Send me some SOL",
-    description: "This is a simple action that allows to tip a creator",
-    icon: "https://img.fotofolio.xyz/?url=https%3A%2F%2Fraw.githubusercontent.com%2Fsolana-labs%2Ftoken-list%2Fmain%2Fassets%2Fmainnet%2FSo11111111111111111111111111111111111111112%2Flogo.png",
-    label: "Tip 0.1 SOL",
+    title: "Send MAINDOCS some SOL",
+    description: "This is a tip jar for MAINDOCS",
+    icon: "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=334,fit=crop,q=95/Yg2lOwJKvXuOZErr/high_res_no_background-YanB2GQwqEUo2QX4.png",
+    label: "Tip 0.001 SOL",
   };
 
   return c.json(response);
@@ -58,8 +58,9 @@ app.post("/", async (c) => {
 async function prepareTransaction(payer: PublicKey) {
   const transferIx = SystemProgram.transfer({
     fromPubkey: payer,
-    toPubkey: new PublicKey("FnUaaRXXAdV1Y4RHD2k9BUwRXBtHuyTWrMK6HHtqKaEq"),
-    lamports: 10000000, // 0.1 sol
+    toPubkey: new PublicKey("7DqbEWdH4ufSPZkpzseghzkwKtBgin9uRtBUkDj834r6"),
+    //lamports: 10000000, // 0.1 sol
+    lamports: 1000000, // 0.001 sol 
   });
 
   const blockhash = await connection
