@@ -38,6 +38,28 @@ app.get("/", (c) => {
     description: "This is a tip jar for MAINDOCS",
     icon: "https://pbs.twimg.com/profile_banners/1774017790728396800/1711904900/1500x500",
     label: "Tip 0.001 SOL",
+    links: {
+      actions: [
+        {
+          href: "/0.1",
+          label: "Tip 0.1 SOL",
+        },
+        {
+          href: "/0.2",
+          label: "Tip 0.2 SOL",
+        },
+        {
+          href: "/{amount}",
+          label: "Tip any amount",
+          parameters: [{
+            type: "number",
+            name: "amount",
+            min: 0.001,
+            max: 100,
+          }]
+        },    
+      ],
+    },
   };
 
   return c.json(response);
