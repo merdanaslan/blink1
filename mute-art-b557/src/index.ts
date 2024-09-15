@@ -65,11 +65,15 @@ app.get("/", (c) => {
   return c.json(response);
 });
 
-app.post("/", async (c) => {
+app.post("/:amount", async (c) => {
   const req = await c.req.json<ActionPostRequest>();
+  const amount = parseFloat(c.req.param("amount"));
 
-  const transaction = await prepareTransaction(new PublicKey(req.account));
-
+  console.log(amount);
+  
+  const transaction = await prepareTransaction(new PublicKey(req.account), amount);
+  
+  
   const response: ActionPostResponse = {
     transaction: Buffer.from(transaction.serialize()).toString("base64"),
   };
@@ -77,12 +81,12 @@ app.post("/", async (c) => {
   return c.json(response);
 });
 
-async function prepareTransaction(payer: PublicKey) {
+async function prepareTransaction(payer: PublicKey, amount: number) {
   const transferIx = SystemProgram.transfer({
     fromPubkey: payer,
     toPubkey: new PublicKey("7DqbEWdH4ufSPZkpzseghzkwKtBgin9uRtBUkDj834r6"),
     //lamports: 10000000, // 0.1 sol
-    lamports: 1000000, // 0.001 sol
+    lamports: amount * 1000000000, // 0.1 sol
   });
 
   const blockhash = await connection
